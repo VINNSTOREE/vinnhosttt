@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const config = require('../config.json');
+const path = require('path');
+const config = require(path.resolve(__dirname, '../../config.json'));
 
 router.get('/', (req, res) => {
   const apikey = req.query.apikey;
