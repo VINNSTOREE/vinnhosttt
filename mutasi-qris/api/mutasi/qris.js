@@ -1,15 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const db = {}; // dummy supaya gak error
-const config = require('../../config.json'); // ← ini benar
+const Database = require('better-sqlite3');
+const db = new Database('./mutasi.db'); // pastikan file db ini ada
+const config = require('../../config.json');
 
 router.get('/', (req, res) => {
   const apikey = req.query.apikey;
   if (apikey !== config.apikey)
     return res.status(401).json({ status: false, message: 'API Key salah' });
 
-  const rows = db.prepare('SELECT * FROM transaksi ORDER BY created_at DESC LIMIT 100').all();
-  res.json({ status: true, message: 'Berhasil ambil mutasi', data: rows });
+  try {
+    const rows = db.prepare('SELECT * FROM transaksi ORDER BY created_at DESC LIMIT 100').all();
+    res.json({ status: true, message: 'Berhasil ambil mutasi', data: rows });
+  } catch (e) {
+    res.status(500).json({ status: false, message: 'Gagal ambil data', error: e.message });
+  }
 });
 
 module.exports = router;
