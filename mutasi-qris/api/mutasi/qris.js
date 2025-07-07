@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../models');
+const db = {}; // dummy supaya gak error
 const config = require('../../config.json'); // ← ini benar
 
 router.get('/', (req, res) => {
