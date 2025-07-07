@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const db = require('./models');
-const config = require('./config.json');
+const config = require('./config.json'); // ⛔ Bisa error kalau lokasi jalannya beda
 
 // Middleware
 app.use(express.json());
