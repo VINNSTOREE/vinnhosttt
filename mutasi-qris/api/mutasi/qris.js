@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Database = require('better-sqlite3');
-const db = new Database('./mutasi.db'); // pastikan file db ini ada
 const config = require('../../config.json');
 
 router.get('/', (req, res) => {
