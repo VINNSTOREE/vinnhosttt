@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../models');
-const config = require('../../config');
+const config = require('../../config.json'); // ← ini benar
 
 router.get('/', (req, res) => {
   const apikey = req.query.apikey;
