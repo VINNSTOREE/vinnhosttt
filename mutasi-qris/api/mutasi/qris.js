@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const config = require('../../../config.json'); // <-- ubah ini
+const config = require('../config.json')/ <-- ubah ini
 
 router.get('/', (req, res) => {
   const apikey = req.query.apikey;
